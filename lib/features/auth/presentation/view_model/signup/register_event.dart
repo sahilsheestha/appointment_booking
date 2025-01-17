@@ -24,5 +24,6 @@ class Registercustomer extends RegisterEvent {
     required this.phone,
     required this.username,
     required this.password,
+    //
   });
 }

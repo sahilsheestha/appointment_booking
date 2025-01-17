@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import '../../../../../core/common/snackbar/my_snackbar.dart';
 import '../../../domain/use_case/register_user_usecase.dart';
 
-
 part 'register_event.dart';
 part 'register_state.dart';
 
@@ -36,8 +35,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
       (l) => emit(state.copyWith(isLoading: false, isSuccess: false)),
       (r) {
         emit(state.copyWith(isLoading: false, isSuccess: true));
-        showMySnackBar(
-            context: event.context, message: "Registration Successful");
+        showMySnackBar(context: event.context, message: "Registration Success");
       },
     );
   }

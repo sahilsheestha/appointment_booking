@@ -16,6 +16,7 @@ class RegisterState {
   RegisterState copyWith({
     bool? isLoading,
     bool? isSuccess,
+    //
   }) {
     return RegisterState(
       isLoading: isLoading ?? this.isLoading,

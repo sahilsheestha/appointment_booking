@@ -42,11 +42,19 @@ class _RegisterViewState extends State<RegisterView> {
               children: [
                 const SizedBox(height: 10),
                 const Text(
-                  "Let's create your account",
+                  "Create Your Account",
                   style: TextStyle(
-                    fontSize: 24,
+                    fontSize: 28,
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                const Text(
+                  "Fill in the details to get started",
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey,
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -60,18 +68,18 @@ class _RegisterViewState extends State<RegisterView> {
                           labelText: "First Name",
                           prefixIcon: const Icon(Icons.person_outline),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(16),
                           ),
                         ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Please enter your first name';
+                            return 'Enter your first name';
                           }
                           return null;
                         },
                       ),
                     ),
-                    const SizedBox(width: 10),
+                    const SizedBox(width: 16),
                     Expanded(
                       child: TextFormField(
                         controller: _lnameController,
@@ -79,12 +87,12 @@ class _RegisterViewState extends State<RegisterView> {
                           labelText: "Last Name",
                           prefixIcon: const Icon(Icons.person_outline),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(16),
                           ),
                         ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Please enter your last name';
+                            return 'Enter your last name';
                           }
                           return null;
                         },
@@ -93,19 +101,19 @@ class _RegisterViewState extends State<RegisterView> {
                   ],
                 ),
                 const SizedBox(height: 20),
-                // Username field
+                // Username Field
                 TextFormField(
                   controller: _usernameController,
                   decoration: InputDecoration(
                     labelText: "Username",
                     prefixIcon: const Icon(Icons.person),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(16),
                     ),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter your username';
+                      return 'Enter your username';
                     }
                     return null;
                   },
@@ -114,16 +122,17 @@ class _RegisterViewState extends State<RegisterView> {
                 // Phone Number Field
                 TextFormField(
                   controller: _phoneController,
+                  keyboardType: TextInputType.phone,
                   decoration: InputDecoration(
                     labelText: "Phone Number",
                     prefixIcon: const Icon(Icons.phone),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(16),
                     ),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter your phone number';
+                      return 'Enter your phone number';
                     }
                     return null;
                   },
@@ -138,48 +147,48 @@ class _RegisterViewState extends State<RegisterView> {
                     prefixIcon: const Icon(Icons.lock_outline),
                     suffixIcon: const Icon(Icons.visibility_off_outlined),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(16),
                     ),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter your password';
+                      return 'Enter your password';
                     }
                     if (value.length < 6) {
-                      return 'Password must be at least 6 characters long';
+                      return 'Password must be at least 6 characters';
                     }
                     return null;
                   },
                 ),
                 const SizedBox(height: 20),
                 // Privacy Policy Agreement
-                Wrap(
-                  alignment: WrapAlignment.start,
-                  crossAxisAlignment: WrapCrossAlignment.center,
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 0.0),
-                      child: Checkbox(
-                        value: true,
-                        onChanged: (value) {},
-                        visualDensity: VisualDensity.compact,
-                        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      ),
+                    Checkbox(
+                      value: true,
+                      onChanged: (value) {},
                     ),
-                    const Text("I agree to "),
-                    GestureDetector(
-                      onTap: () {},
-                      child: const Text(
-                        "Privacy Policy",
-                        style: TextStyle(color: Colors.blue),
-                      ),
-                    ),
-                    const Text(" and "),
-                    GestureDetector(
-                      onTap: () {},
-                      child: const Text(
-                        "Terms of Use",
-                        style: TextStyle(color: Colors.blue),
+                    Expanded(
+                      child: Wrap(
+                        children: [
+                          const Text("I agree to the "),
+                          GestureDetector(
+                            onTap: () {},
+                            child: const Text(
+                              "Privacy Policy",
+                              style: TextStyle(color: Colors.blue),
+                            ),
+                          ),
+                          const Text(" and "),
+                          GestureDetector(
+                            onTap: () {},
+                            child: const Text(
+                              "Terms of Use",
+                              style: TextStyle(color: Colors.blue),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
@@ -207,14 +216,14 @@ class _RegisterViewState extends State<RegisterView> {
                       padding: const EdgeInsets.symmetric(vertical: 16),
                       backgroundColor: Colors.blue,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(16),
                       ),
                     ),
                     child: const Text(
                       "Create Account",
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 16,
+                        fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
