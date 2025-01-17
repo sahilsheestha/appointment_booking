@@ -24,32 +24,30 @@ class LoginView extends StatelessWidget {
             child: Form(
               key: _formKey,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const SizedBox(height: 30),
                   // Logo
-                  Row(
-                    children: [
-                      Container(
-                        height: size.height * 0.1,
-                        alignment: const Alignment(0, 0),
-                        child: Image.asset('assets/logo/xyz.jpg'),
-                      ),
-                    ],
+                  Center(
+                    child: Image.asset(
+                      'assets/logo/xyz.jpg',
+                      height: size.height * 0.12,
+                    ),
                   ),
                   const SizedBox(height: 20),
                   // Welcome Text
                   const Text(
-                    "Welcome to Appoinment Booking Syste ,",
+                    "Welcome to Appointment Booking System",
+                    textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 26,
+                      fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
                     ),
                   ),
                   const SizedBox(height: 8),
                   const Text(
-                    "Login",
+                    "Login to continue",
                     style: TextStyle(
                       fontSize: 14,
                       color: Colors.grey,
@@ -61,9 +59,9 @@ class LoginView extends StatelessWidget {
                     controller: _usernameController,
                     decoration: InputDecoration(
                       labelText: "Username",
-                      prefixIcon: const Icon(Icons.perm_identity_rounded),
+                      prefixIcon: const Icon(Icons.person_outline),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(16),
                       ),
                     ),
                     validator: (value) {
@@ -83,7 +81,7 @@ class LoginView extends StatelessWidget {
                       prefixIcon: const Icon(Icons.lock_outline),
                       suffixIcon: const Icon(Icons.visibility_off_outlined),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(16),
                       ),
                     ),
                     validator: (value) {
@@ -139,9 +137,9 @@ class LoginView extends StatelessWidget {
                       },
                       style: ElevatedButton.styleFrom(
                         padding: const EdgeInsets.symmetric(vertical: 16),
-                        backgroundColor: Colors.black,
+                        backgroundColor: Colors.blueAccent,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(16),
                         ),
                       ),
                       child: const Text(
@@ -170,7 +168,7 @@ class LoginView extends StatelessWidget {
                       style: OutlinedButton.styleFrom(
                         padding: const EdgeInsets.symmetric(vertical: 16),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(16),
                         ),
                       ),
                       child: const Text(
@@ -183,53 +181,63 @@ class LoginView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 20),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Or Sign In With",
-                        style: TextStyle(color: Colors.grey),
-                      ),
-                    ],
+                  const SizedBox(height: 30),
+                  const Text(
+                    "Or Sign In With",
+                    style: TextStyle(color: Colors.grey),
                   ),
                   const SizedBox(height: 20),
                   // Social Media Buttons
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        width: 80,
-                        height: 80,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey.shade300),
-                          borderRadius: BorderRadius.circular(25),
-                        ),
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: Image.asset('assets/images/google.png'),
-                          iconSize: 24,
-                        ),
+                      SocialMediaButton(
+                        iconPath: 'assets/images/google.png',
+                        onPressed: () {},
                       ),
                       const SizedBox(width: 20),
-                      Container(
-                        width: 80,
-                        height: 80,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey.shade300),
-                          borderRadius: BorderRadius.circular(25),
-                        ),
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: Image.asset('assets/images/fb.png'),
-                          iconSize: 24,
-                        ),
+                      SocialMediaButton(
+                        iconPath: 'assets/images/fb.png',
+                        onPressed: () {},
                       ),
                     ],
                   ),
                 ],
               ),
             ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class SocialMediaButton extends StatelessWidget {
+  final String iconPath;
+  final VoidCallback onPressed;
+
+  const SocialMediaButton({
+    required this.iconPath,
+    required this.onPressed,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        width: 60,
+        height: 60,
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.grey.shade300),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Center(
+          child: Image.asset(
+            iconPath,
+            width: 32,
+            height: 32,
           ),
         ),
       ),

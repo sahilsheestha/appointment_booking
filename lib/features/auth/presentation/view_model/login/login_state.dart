@@ -8,11 +8,11 @@ class LoginState {
     required this.isLoading,
     required this.isSuccess,
   });
-
+//
   LoginState.initial()
       : isLoading = false,
         isSuccess = false;
-
+//
   LoginState copyWith({
     bool? isLoading,
     bool? isSuccess,
