@@ -36,4 +36,9 @@ class AuthLocalRepository implements IAuthRepository {
     }
   }
 
- 
+  @override
+  Future<Either<Failure, void>> registercustomer(AuthEntity customer) async {
+    try {
+      return Right(_authLocalDataSource.registercustomer(customer));
+    } catch (e) {
+     
