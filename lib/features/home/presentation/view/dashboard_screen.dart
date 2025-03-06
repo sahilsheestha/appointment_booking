@@ -191,19 +191,7 @@ class AppointmentDetailDialog extends StatelessWidget {
 
   const AppointmentDetailDialog({super.key, required this.appointment});
 
-  Future<void> updateStatus(String status) async {
-    final response = await http.put(
-      Uri.parse('http://localhost:3000/appointments/${appointment.id}'),
-      headers: {'Content-Type': 'application/json'},
-      body: json.encode({'status': status}),
-    );
-    if (response.statusCode == 200) {
-      // Update status locally
-      appointment.status = status;
-    } else {
-      throw Exception('Failed to update status');
-    }
-  }
+
 
   @override
   Widget build(BuildContext context) {
